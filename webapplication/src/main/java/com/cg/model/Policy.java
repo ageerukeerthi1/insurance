@@ -2,51 +2,49 @@ package com.cg.model;
 
 public class Policy 
 {
-	private long policyNumber;
-	private long accountNumber;
-	private double policyPremium;
-	
-	
-	
-	public Policy() {
-		super();
-	}
+		private Integer policyNumber;
+		private double policyPremium;
+		private Integer accNumber;
+		
+		public Policy() {
+			super();
+		}
 
-	public Policy(long policyNumber, long accountNumber, double policyPremium) {
-		super();
-		this.policyNumber = policyNumber;
-		this.accountNumber = accountNumber;
-		this.policyPremium = policyPremium;
-	}
+		public Policy(Integer policyNumber, double policyPremium, Integer accNumber) {
+			super();
+			this.policyNumber = policyNumber;
+			this.policyPremium = policyPremium;
+			this.accNumber = accNumber;
+		}
 
-	public long getPolicyNumber() {
-		return policyNumber;
-	}
+		public Integer getPolicyNumber() {
+			return policyNumber;
+		}
 
-	public void setPolicyNumber(long policyNumber) {
-		this.policyNumber = policyNumber;
-	}
+		public void setPolicyNumber(Integer policyNumber) {
+			this.policyNumber = policyNumber;
+		}
 
-	public long getAccountNumber() {
-		return accountNumber;
-	}
+		public double getPolicyPremium() {
+			return policyPremium;
+		}
 
-	public void setAccountNumber(long accountNumber) {
-		this.accountNumber = accountNumber;
-	}
+		public void setPolicyPremium(double policyPremium) {
+			this.policyPremium = policyPremium;
+		}
 
-	public double getPolicyPremium() {
-		return policyPremium;
-	}
+		public Integer getAccNumber() {
+			return accNumber;
+		}
 
-	public void setPolicyPremium(double policyPremium) {
-		this.policyPremium = policyPremium;
-	}
+		public void setAccNumber(Integer accNumber) {
+			this.accNumber = accNumber;
+		}
 
-	@Override
-	public String toString() {
-		return "Policy [policyNumber=" + policyNumber + ", accountNumber=" + accountNumber + ", policyPremium="
-				+ policyPremium + "]";
+		@Override
+		public String toString() {
+			return "Policy [policyNumber=" + policyNumber + ", policyPremium=" + policyPremium + ", accNumber=" + accNumber
+					+ "]";
+		}
+		
 	}
-	
-}

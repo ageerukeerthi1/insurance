@@ -1,10 +1,22 @@
 package com.cg.controller;
+import org.apache.logging.log4j.LogManager;
+
+import org.apache.logging.log4j.Logger;
+
+import com.cg.exceptions.LoginAndCommonException;
+import com.cg.service.AdminService;
+import com.cg.service.IAdminService;
+import com.cg.service.IInsuredService;
+import com.cg.service.InsuredService;
+
+import java.util.logging.Logger.*;
 
 import java.io.IOException;
 
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,108 +26,88 @@ import javax.servlet.http.HttpSession;
 
 
 
-import com.cg.dao.IUserRoleDAO;
-import com.cg.dao.LoginAndCommonDAO;
-import com.cg.dao.UserRoleDAO;
-import com.cg.model.Insured;
-import com.cg.model.User;
-import com.cg.service.IInsuranceQuoteGenerationService;
-import com.cg.service.InsuranceQuoteGenerationService;
-import com.cg.utility.LoggerUtility;
-
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet 
 {
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException 
-	{
-		HttpSession session = null;
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		IInsuranceQuoteGenerationService service = new InsuranceQuoteGenerationService();
+		Logger logger=LogManager.getLogger();
+		//Creating an object to Admin Service class
+		IAdminService adminService = new AdminService();
+		IInsuredService insuredService = new InsuredService();
+		HttpSession session = request.getSession();
 		
-	//	Logger logger = LoggerUtility.getLogger();
+		RequestDispatcher dispatcher=null;
 		
-		User userRole = new User();
-		String uName = request.getParameter("userName");
-		String pWord = request.getParameter("password");
-		userRole.setUsername(uName);
-		userRole.setPassword(pWord);
-		PrintWriter writer = response.getWriter();
 		String roleCode = "";
+		boolean isFound = false;
+		boolean isUserExists = false;
 		
+		PrintWriter out = response.getWriter();
+		
+		
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		session.setAttribute("username", username);
+		System.out.println(username);
 		try {
-			roleCode = service.verifyUser(userRole);
 			
 			
-			if(roleCode.equals("ADMIN001"))
-			{
-				//writer.println("Welcome "+userRole.getUsername());
-				if (session == null) 
-				{
-					session = request.getSession();
-					session.setAttribute("adminName", uName);
+			isFound = adminService.loginValidation(username,password);
+			
+			if(isFound == true) {
+			
+				roleCode = adminService.getRoleCode(username, password);
+			    System.out.println("Rolecode is:"+roleCode);
+				if(roleCode != null) {
+				
+					if(roleCode.equals("UW")) {
+					
+						dispatcher = request.getRequestDispatcher("adminhome.html");
+						dispatcher.forward(request, response);
+					
+					}else if(roleCode.equals("A")) {
+					    
+						System.out.println(roleCode);
+						dispatcher = request.getRequestDispatcher("agenthome.jsp");
+						dispatcher.forward(request, response);
+					
+					}else if(roleCode.equals("I")){
+						
+						isUserExists = insuredService.accountValidation(username);
+						if (isUserExists) {
+							//if (isCreated == 1) {
+								//out.println("Account Created Successfully!!");
+								dispatcher = request.getRequestDispatcher("insurerhome.html");//insurerhome.html");
+								dispatcher.forward(request, response);
+						}else {
+									//out.println("Account does not exists! Create Account");
+									dispatcher = request.getRequestDispatcher("InsuredAccountCreation.html");
+									dispatcher.include(request, response);
+						}
+											
+					}
 				}
 				
-				System.out.println(uName+" admin has logged in");
+			} else {
 				
-//				request.getRequestDispatcher("adminLogin.jsp").forward(request, response);
-				response.sendRedirect("Admin.jsp");
-			}
-			else if(roleCode.equals("AGENT002"))
-			{
-				if (session == null) 
-				{
-					session = request.getSession();
-					session.setAttribute("agentName", uName);
-				}
-			//	logger.info(uName+" agent has logged in");
-				System.out.println(uName+" agent has logged in");
-				response.sendRedirect("Agent.jsp");
-			}
-			else if(roleCode.equals("INSURED003"))
-			{
-				if (session == null) 
-				{
-					session = request.getSession();
-					session.setAttribute("insuredName", uName);
-				}
-			//	logger.info(uName+" insured has logged in");
-				System.out.println(uName+" insured has logged in");
+				logger.info("User not found, Please register");
 				
 				
-				String result = service.accountExists(uName);
-				
-				request.setAttribute("accountExists", result);
-				if(request.getAttribute("accountExists").equals("Yes")) {
-					String accountNumber = service.findAccountNumber(uName);
-					request.setAttribute("accNum", accountNumber);
-				}
-				request.getRequestDispatcher("Insured.jsp").forward(request, response);
+/*				System.out.println("User not found");
+*/
 			}
-			else
-			{
-				request.setAttribute("loginFailed", "Invalid Credentials. Try Again");
-				request.getRequestDispatcher("LoginScreen.jsp").forward(request, response);
-			}
-		} 
-		catch (SQLException e) 
-		{
-//			logger.error(e.getMessage());
-			e.printStackTrace();
-			response.sendRedirect("ErrorPage.jsp");
-		}
-		catch (Exception e)
-		{
-//			logger.error(e.getMessage());
-			e.getMessage();
-			response.sendRedirect("ErrorPage.jsp");
+		}catch (LoginAndCommonException e) {
+		
+			//throw new LoginException("Error occured while validating"+e.getMessage());
+			logger.error(e.getMessage());
+		
 		}
 	}
-	
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
-		response.sendRedirect("ErrorPage.jsp");
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(req, resp);
 	}
 }

@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div class = "accountbox">
+	<h1>Policy Creation</h1>
+	<br>
+	<form action = "PolicyCreationServlet" method = "post">
+		<p>Enter the account number</p>
+		<input type = "text" name = "accNumber" required><br><br>
+		<center><input type = "submit" name = "submit" value = "Create Policy"></center>
+	</form>
+</body>
+</html>

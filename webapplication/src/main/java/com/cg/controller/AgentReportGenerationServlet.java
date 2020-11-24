@@ -1,15 +1,18 @@
 package com.cg.controller;
 import org.apache.logging.log4j.LogManager;
-
 import org.apache.logging.log4j.Logger;
+
+import com.cg.exceptions.LoginAndCommonException;
+import com.cg.model.Accounts;
+import com.cg.model.PolicyQuestions;
+import com.cg.service.AgentService;
+import com.cg.service.IAgentService;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger.*;
 
 import java.io.IOException;
-
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,16 +21,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.cg.exceptions.LoginAndCommonException;
-import com.cg.model.Accounts;
-import com.cg.model.PolicyDetails;
-import com.cg.model.PolicyQuestions;
-import com.cg.service.AdminService;
-import com.cg.service.IAdminService;
 
-@WebServlet("/ReportGenerationServlet")
-public class ReportGenerationServlet extends HttpServlet 
-{
+@WebServlet("/AgentReportGenerationServlet")
+public class AgentReportGenerationServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -39,7 +35,8 @@ public class ReportGenerationServlet extends HttpServlet
 		List<PolicyQuestions> questions = new ArrayList<PolicyQuestions>();
 		List<String> selectedAns = new ArrayList<String>();
 		int polNum = Integer.parseInt(request.getParameter("polNumber"));
-		IAdminService service = new AdminService();
+		
+		IAgentService service = new AgentService();
 		Accounts account = new Accounts();
 		
 		try {
@@ -55,12 +52,12 @@ public class ReportGenerationServlet extends HttpServlet
 			request.setAttribute("questions", questions);
 			request.setAttribute("selectedAns", selectedAns);
 			request.setAttribute("premium", premium);
-			dispatcher = request.getRequestDispatcher("generatereport.jsp");
+			dispatcher = request.getRequestDispatcher("agentgeneratereport.jsp");
 			dispatcher.forward(request, response);
 			
 		} catch (LoginAndCommonException e) {
 			// TODO Auto-generated catch block
-			logger.error(e.getMessage());
+			logger.info(e.getMessage());
 		}
 		
 	}
