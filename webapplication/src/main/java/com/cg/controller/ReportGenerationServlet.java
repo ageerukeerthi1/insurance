@@ -1,4 +1,6 @@
 package com.cg.controller;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +29,7 @@ public class ReportGenerationServlet extends HttpServlet
 {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		//Logger logger=LogManager.getLogger();
 		RequestDispatcher dispatcher = null;
 		int accNumber = Integer.parseInt(request.getParameter("accNumber"));
@@ -56,14 +58,14 @@ public class ReportGenerationServlet extends HttpServlet
 			dispatcher.forward(request, response);
 			
 		} catch (LoginAndCommonException e) {
-			// TODO Auto-generated catch block
 			//logger.error(e.getMessage());
+			e.printStackTrace();
 		}
 		
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
 		doPost(req, resp);
 	}
 }

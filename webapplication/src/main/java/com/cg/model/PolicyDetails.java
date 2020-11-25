@@ -38,5 +38,41 @@ public class PolicyDetails {
 		return "PolicyDetails [policyNumber=" + policyNumber + ", questionId=" + questionId + ", answer=" + answer
 				+ "]";
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((answer == null) ? 0 : answer.hashCode());
+		result = prime * result + ((policyNumber == null) ? 0 : policyNumber.hashCode());
+		result = prime * result + ((questionId == null) ? 0 : questionId.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PolicyDetails other = (PolicyDetails) obj;
+		if (answer == null) {
+			if (other.answer != null)
+				return false;
+		} else if (!answer.equals(other.answer))
+			return false;
+		if (policyNumber == null) {
+			if (other.policyNumber != null)
+				return false;
+		} else if (!policyNumber.equals(other.policyNumber))
+			return false;
+		if (questionId == null) {
+			if (other.questionId != null)
+				return false;
+		} else if (!questionId.equals(other.questionId))
+			return false;
+		return true;
+	}
+	
 	
 }

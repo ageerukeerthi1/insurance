@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>  
+<center>
     <center> <h1> User Login </h1> </center> 
     <form action="LoginServlet" method="post">
         <div class="container"> 
@@ -20,5 +21,6 @@
      
         </div>
     </form>
+    </center>
 </body>
 </html>

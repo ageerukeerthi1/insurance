@@ -1,12 +1,12 @@
 package com.cg.controller;
 
 import com.cg.exceptions.LoginAndCommonException;
+//
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import com.cg.model.Accounts;
 import com.cg.service.AgentService;
 import com.cg.service.IAgentService;
-
-import java.util.logging.Logger.*;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -34,15 +34,16 @@ public class AgentAccountCreationServlet extends HttpServlet {
 		String userName = request.getParameter("userName");
 		String insuredName = request.getParameter("insuredName");
 		String insuredStreet = request.getParameter("insuredStreet");
-		//System.Logger.info(insuredStreet);
+		//Logger.info(insuredStreet);
+		System.out.println(insuredStreet);
 		String insuredCity = request.getParameter("insuredCity");
 		String insuredState = request.getParameter("insuredState");
 		int insuredZip = Integer.parseInt(request.getParameter("insuredZip"));
 		String busSegName = request.getParameter("busSegName");
-		//System.Logger.info("hello");
+		
 		//int accNumber = Integer.parseInt(request.getParameter("accnumber"));
 		
-		//System.Logger.info("line 38");
+		
 		try {
 						
 			String bussinessSegmentId = service.getLineOfBusinessIdByName(busSegName);

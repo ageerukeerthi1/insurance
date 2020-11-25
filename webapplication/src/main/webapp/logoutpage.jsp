@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<center>
 <div align="right">
   <a href="logout.jsp"><button type="button">LOGOUT</button></a>
 </div>
+</center>
 </body>
 </html>

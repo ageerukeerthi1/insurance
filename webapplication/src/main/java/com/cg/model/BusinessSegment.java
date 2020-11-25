@@ -64,6 +64,47 @@ public class BusinessSegment {
 		return "BusinessSegment [Bus_Seg_Id=" + Bus_Seg_Id + ", Bus_Seg_Seq=" + Bus_Seg_Seq + ", Bus_Seg_Name="
 				+ Bus_Seg_Name + "]";
 	}
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Bus_Seg_Id == null) ? 0 : Bus_Seg_Id.hashCode());
+		result = prime * result + ((Bus_Seg_Name == null) ? 0 : Bus_Seg_Name.hashCode());
+		result = prime * result + ((Bus_Seg_Seq == null) ? 0 : Bus_Seg_Seq.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BusinessSegment other = (BusinessSegment) obj;
+		if (Bus_Seg_Id == null) {
+			if (other.Bus_Seg_Id != null)
+				return false;
+		} else if (!Bus_Seg_Id.equals(other.Bus_Seg_Id))
+			return false;
+		if (Bus_Seg_Name == null) {
+			if (other.Bus_Seg_Name != null)
+				return false;
+		} else if (!Bus_Seg_Name.equals(other.Bus_Seg_Name))
+			return false;
+		if (Bus_Seg_Seq == null) {
+			if (other.Bus_Seg_Seq != null)
+				return false;
+		} else if (!Bus_Seg_Seq.equals(other.Bus_Seg_Seq))
+			return false;
+		return true;
+	}
 	
 	
 	

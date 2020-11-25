@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<center>
 <%
  if(session.getAttribute("usernameUW") != null)
  {
@@ -23,4 +24,6 @@
 	 response.sendRedirect("agenthome.jsp");
  }
 %>
+</center>
+</body>
 </html>

@@ -1,13 +1,14 @@
 package com.cg.controller;
 
 import com.cg.exceptions.LoginAndCommonException;
+
 import com.cg.model.PolicyQuestions;
 import com.cg.service.AgentService;
 import com.cg.service.IAgentService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger.*;
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -57,6 +58,7 @@ public class AgentPolicyCreationServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			} else {
 				//logger.info("Account does not exists, so create an account");
+				System.out.println("Account does not exists, so create an account");
 				dispatcher = request.getRequestDispatcher("agenthome.jsp");
 				dispatcher.include(request, response);
 

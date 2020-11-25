@@ -17,6 +17,8 @@ import com.cg.model.Accounts;
 import com.cg.service.AdminService;
 import com.cg.service.IAdminService;
 
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 @WebServlet("/AccountCreationServlet")
 public class AdminAccountCreationServlet extends HttpServlet {
@@ -26,7 +28,7 @@ public class AdminAccountCreationServlet extends HttpServlet {
 		IAdminService service = new AdminService();
 		
 		int isCreated = 0;
-		// Logger logger=LogManager.getLogger();
+		//Logger logger=LogManager.getLogger();
 		
 		PrintWriter out = response.getWriter();
 		RequestDispatcher dispatcher = null;
@@ -40,11 +42,7 @@ public class AdminAccountCreationServlet extends HttpServlet {
 		String insuredState = request.getParameter("insuredState");
 		int insuredZip = Integer.parseInt(request.getParameter("insuredZip"));
 		String busSegName = request.getParameter("busSegName");
-		//logger.info("hello");
-		System.out.println("hello");
-		//int accNumber = Integer.parseInt(request.getParameter("accnumber"));
-		System.out.println("line 38");
-		//logger.info("line 38");
+		
 		try {
 						
 			String bussinessSegmentId = service.getLineOfBusinessIdByName(busSegName);
@@ -57,18 +55,16 @@ public class AdminAccountCreationServlet extends HttpServlet {
 				if (isCreated == 1) {
 					//logger.info("Account Created Successfully!!");
 					System.out.println("Account Created Successfully!!");
-					/*dispatcher = request.getRequestDispatcher("adminhome.html");
-					dispatcher.include(request, response);
-			*/	}
+					
+						}
 			} else {
-			//	logger.info("User does not exists! First register as user");
+				//logger.info("User does not exists! First register as user");
 				System.out.println("User does not exists! First register as user");
-			/*	dispatcher = request.getRequestDispatcher("adminhome.html");
-				dispatcher.include(request, response);
-			*/}
+			
+				}
 		} catch (LoginAndCommonException e) {
 			//logger.error(e.getMessage());
-			e.printStackTrace();
+		    e.printStackTrace();
 		}
 
 	}

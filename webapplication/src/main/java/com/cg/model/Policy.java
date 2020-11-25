@@ -46,5 +46,42 @@ public class Policy
 			return "Policy [policyNumber=" + policyNumber + ", policyPremium=" + policyPremium + ", accNumber=" + accNumber
 					+ "]";
 		}
+
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((accNumber == null) ? 0 : accNumber.hashCode());
+			result = prime * result + ((policyNumber == null) ? 0 : policyNumber.hashCode());
+			long temp;
+			temp = Double.doubleToLongBits(policyPremium);
+			result = prime * result + (int) (temp ^ (temp >>> 32));
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Policy other = (Policy) obj;
+			if (accNumber == null) {
+				if (other.accNumber != null)
+					return false;
+			} else if (!accNumber.equals(other.accNumber))
+				return false;
+			if (policyNumber == null) {
+				if (other.policyNumber != null)
+					return false;
+			} else if (!policyNumber.equals(other.policyNumber))
+				return false;
+			if (Double.doubleToLongBits(policyPremium) != Double.doubleToLongBits(other.policyPremium))
+				return false;
+			return true;
+		}
+		
 		
 	}

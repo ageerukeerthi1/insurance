@@ -14,6 +14,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<center>
 <div class = "loginbox">
 <% int count = 0; %>
 <form action = "PremiumGenerationServlet" method = post>
@@ -28,5 +29,6 @@
 	<input type = "submit" value="Create Policy">
   </form>
 </div>
+</center>
   </body>
 </html>

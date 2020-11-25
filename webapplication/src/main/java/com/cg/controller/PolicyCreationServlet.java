@@ -1,5 +1,6 @@
 package com.cg.controller;
-import java.util.logging.Logger.*;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
@@ -35,6 +36,7 @@ public class PolicyCreationServlet extends HttpServlet
 		ServletContext context = request.getServletContext();
 		context.setAttribute("accNumber", accNumber);
 		PrintWriter out = response.getWriter();
+		
 	    
 		IAdminService service = new AdminService();
 		
@@ -53,8 +55,9 @@ public class PolicyCreationServlet extends HttpServlet
 			dispatcher.forward(request, response);
 		} catch (LoginAndCommonException e) {
 			// TODO Auto-generated catch block
-			//e.printStackTrace();
+			
 			//logger.error(e.getMessage());
+			e.printStackTrace();
 		}
 		
 	}

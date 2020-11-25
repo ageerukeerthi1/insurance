@@ -27,7 +27,70 @@ public class Accounts implements Serializable{
 		this.lineOfBusiness = lineOfBusiness;
 		this.accountNumber = accountNumber;
 	}
+	
 
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((accountNumber == null) ? 0 : accountNumber.hashCode());
+		result = prime * result + ((insuredCity == null) ? 0 : insuredCity.hashCode());
+		result = prime * result + ((insuredName == null) ? 0 : insuredName.hashCode());
+		result = prime * result + ((insuredState == null) ? 0 : insuredState.hashCode());
+		result = prime * result + ((insuredStreet == null) ? 0 : insuredStreet.hashCode());
+		result = prime * result + ((insuredZip == null) ? 0 : insuredZip.hashCode());
+		result = prime * result + ((lineOfBusiness == null) ? 0 : lineOfBusiness.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Accounts other = (Accounts) obj;
+		if (accountNumber == null) {
+			if (other.accountNumber != null)
+				return false;
+		} else if (!accountNumber.equals(other.accountNumber))
+			return false;
+		if (insuredCity == null) {
+			if (other.insuredCity != null)
+				return false;
+		} else if (!insuredCity.equals(other.insuredCity))
+			return false;
+		if (insuredName == null) {
+			if (other.insuredName != null)
+				return false;
+		} else if (!insuredName.equals(other.insuredName))
+			return false;
+		if (insuredState == null) {
+			if (other.insuredState != null)
+				return false;
+		} else if (!insuredState.equals(other.insuredState))
+			return false;
+		if (insuredStreet == null) {
+			if (other.insuredStreet != null)
+				return false;
+		} else if (!insuredStreet.equals(other.insuredStreet))
+			return false;
+		if (insuredZip == null) {
+			if (other.insuredZip != null)
+				return false;
+		} else if (!insuredZip.equals(other.insuredZip))
+			return false;
+		if (lineOfBusiness == null) {
+			if (other.lineOfBusiness != null)
+				return false;
+		} else if (!lineOfBusiness.equals(other.lineOfBusiness))
+			return false;
+		return true;
+	}
 
 
 	public String getInsuredName() {

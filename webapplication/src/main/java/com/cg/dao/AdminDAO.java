@@ -21,7 +21,6 @@ public class AdminDAO implements IAdminDAO {
 	static ResultSet resultSet = null;
 	
 	public boolean loginValidation(String username, String password) throws LoginAndCommonException {
-		// TODO Auto-generated method stub
 		
 		boolean found = false;
 		try {

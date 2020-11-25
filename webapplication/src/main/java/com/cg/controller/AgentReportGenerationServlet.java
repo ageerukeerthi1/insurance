@@ -2,6 +2,8 @@ package com.cg.controller;
 
 
 import com.cg.exceptions.LoginAndCommonException;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import com.cg.model.Accounts;
 import com.cg.model.PolicyQuestions;
 import com.cg.service.AgentService;
@@ -9,7 +11,6 @@ import com.cg.service.IAgentService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger.*;
 
 import java.io.IOException;
 
@@ -57,6 +58,7 @@ public class AgentReportGenerationServlet extends HttpServlet {
 		} catch (LoginAndCommonException e) {
 			// TODO Auto-generated catch block
 			//logger.info(e.getMessage());
+			e.printStackTrace();
 		}
 		
 	}

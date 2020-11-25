@@ -1,4 +1,6 @@
 package com.cg.controller;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
@@ -48,8 +50,6 @@ public class PremiumGenerationServlet extends HttpServlet {
 			questionIds.add(qAndA[0]);
 			selectedAnswers.add(qAndA[1]);
 			weightages.add(Integer.parseInt(qAndA[2]));
-		
-			//weightages.add(Integer.parseInt(request.getParameter(""+i+1)));
 			sumOfWeightages += weightages.get(i);
 			System.out.println("weightage of ans "+ weightages.get(i) + "  sum of wightages as of now "+sumOfWeightages);
 		}
@@ -58,16 +58,17 @@ public class PremiumGenerationServlet extends HttpServlet {
 		IAdminService service = new AdminService();
 		Policy policy = new Policy();
 		try {
-			//context.setAttribute("accNumber", accNumber);
+			
 			accNumber = Integer.parseInt(""+context.getAttribute("accNumber"));
 			polPremium = service.getPolicyPremiumAmount(sumOfWeightages);
-			//questionIds = adminDao.getQuestionIds(busSegId);
+			
 			System.out.println(accNumber);
 			policy.setAccNumber(accNumber);
 			policy.setPolicyPremium(polPremium);
 			isInserted = service.createPolicy(policy);
 			if(isInserted > 0) {
 				//logger.info("Policy created successfully!!!!");
+				System.out.println("Policy created successfully");
 				polNumber = service.getPolicyNumber();
 				service.addPolicyDetails(polNumber, questionIds, selectedAnswers);
 				System.out.println("In Premium generation servlet "+polNumber);
@@ -75,13 +76,10 @@ public class PremiumGenerationServlet extends HttpServlet {
 				dispatcher.include(request, response);
 				
 			}
-			/*System.out.println(polPremium);
-			out.println(polPremium);
-			*/			
+						
 		} catch (LoginAndCommonException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-		//	logger.error(e.getStackTrace());
+			//logger.error(e.getStackTrace());
+			e.printStackTrace();
 		}
 	}
 }

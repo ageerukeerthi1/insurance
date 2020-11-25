@@ -120,6 +120,85 @@ public class PolicyQuestions {
 				+ polQuesAns2Weightage + ", polQuesAns3=" + polQuesAns3 + ", polQuesAns3Weightage="
 				+ polQuesAns3Weightage + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((busSegId == null) ? 0 : busSegId.hashCode());
+		result = prime * result + ((polQuesAns1 == null) ? 0 : polQuesAns1.hashCode());
+		result = prime * result + ((polQuesAns1Weightage == null) ? 0 : polQuesAns1Weightage.hashCode());
+		result = prime * result + ((polQuesAns2 == null) ? 0 : polQuesAns2.hashCode());
+		result = prime * result + ((polQuesAns2Weightage == null) ? 0 : polQuesAns2Weightage.hashCode());
+		result = prime * result + ((polQuesAns3 == null) ? 0 : polQuesAns3.hashCode());
+		result = prime * result + ((polQuesAns3Weightage == null) ? 0 : polQuesAns3Weightage.hashCode());
+		result = prime * result + ((polQuesDesc == null) ? 0 : polQuesDesc.hashCode());
+		result = prime * result + ((polQuesId == null) ? 0 : polQuesId.hashCode());
+		result = prime * result + ((polQuesSeq == null) ? 0 : polQuesSeq.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PolicyQuestions other = (PolicyQuestions) obj;
+		if (busSegId == null) {
+			if (other.busSegId != null)
+				return false;
+		} else if (!busSegId.equals(other.busSegId))
+			return false;
+		if (polQuesAns1 == null) {
+			if (other.polQuesAns1 != null)
+				return false;
+		} else if (!polQuesAns1.equals(other.polQuesAns1))
+			return false;
+		if (polQuesAns1Weightage == null) {
+			if (other.polQuesAns1Weightage != null)
+				return false;
+		} else if (!polQuesAns1Weightage.equals(other.polQuesAns1Weightage))
+			return false;
+		if (polQuesAns2 == null) {
+			if (other.polQuesAns2 != null)
+				return false;
+		} else if (!polQuesAns2.equals(other.polQuesAns2))
+			return false;
+		if (polQuesAns2Weightage == null) {
+			if (other.polQuesAns2Weightage != null)
+				return false;
+		} else if (!polQuesAns2Weightage.equals(other.polQuesAns2Weightage))
+			return false;
+		if (polQuesAns3 == null) {
+			if (other.polQuesAns3 != null)
+				return false;
+		} else if (!polQuesAns3.equals(other.polQuesAns3))
+			return false;
+		if (polQuesAns3Weightage == null) {
+			if (other.polQuesAns3Weightage != null)
+				return false;
+		} else if (!polQuesAns3Weightage.equals(other.polQuesAns3Weightage))
+			return false;
+		if (polQuesDesc == null) {
+			if (other.polQuesDesc != null)
+				return false;
+		} else if (!polQuesDesc.equals(other.polQuesDesc))
+			return false;
+		if (polQuesId == null) {
+			if (other.polQuesId != null)
+				return false;
+		} else if (!polQuesId.equals(other.polQuesId))
+			return false;
+		if (polQuesSeq == null) {
+			if (other.polQuesSeq != null)
+				return false;
+		} else if (!polQuesSeq.equals(other.polQuesSeq))
+			return false;
+		return true;
+	}
 	
 }
 

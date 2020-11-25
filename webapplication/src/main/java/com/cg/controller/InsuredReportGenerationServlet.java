@@ -2,6 +2,8 @@ package com.cg.controller;
 
 
 import com.cg.exceptions.LoginAndCommonException;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import com.cg.model.Accounts;
 import com.cg.model.PolicyQuestions;
 import com.cg.service.IInsuredService;
@@ -9,8 +11,6 @@ import com.cg.service.InsuredService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger.*;
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -62,6 +62,7 @@ public class InsuredReportGenerationServlet extends HttpServlet {
 		} catch(LoginAndCommonException e) {
 			// TODO Auto-generated catch block
 		//logger.error(e.getMessage());
+			e.printStackTrace();
 		}
 		
 	}

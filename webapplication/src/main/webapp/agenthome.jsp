@@ -13,9 +13,9 @@
 			window.history.forward();	
 		}
 	
-	function accountCreation() {
-	document.getElementById("displayIframe").innerHTML="<iframe src ='AgentAccountCreation.jsp' class ='userframe'></iframe>";
-	}
+		function accountCreation() {
+			document.getElementById("displayIframe").innerHTML="<iframe src ='accountcreation.html' class ='userframe'></iframe>";
+			}
 	function policyCreation() {
 	document.getElementById("displayIframe").innerHTML="<iframe src ='policycreation.html' class ='userframe'></iframe>";
 	}
@@ -25,10 +25,11 @@
 	</script>
 </head>
 <body>
+</center>
 
 <%
 //System.out.println(session.getAttribute("username"));
- if(session.getAttribute("usernameA")==null)
+ if(session.getAttribute("username")==null)
 {
 	 session.invalidate();
      response.sendRedirect("index.html");
@@ -48,5 +49,7 @@
 			<li><button type = "submit" onclick="policyCreation()"><b>Policy  Creation</b></button></li>
 			<li><button type = "submit" onclick="viewPolicy()"><b>View Policy</b></button></li>  
 		</ul>
+		</div>
+		</center>
 </body>
 </html>

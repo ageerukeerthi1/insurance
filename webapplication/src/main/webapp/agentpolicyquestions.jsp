@@ -14,6 +14,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<center>
 
 <% int count = 0; %>
  <form action = "AgentPremiumGenerationServlet" method = post>
@@ -27,5 +28,6 @@
 	<input type="hidden" name = "numofquestions" value="<%=count %>">
 	<input type = "submit" value="Create Policy">
   </form>
+  </center>
   </body>
 </html>

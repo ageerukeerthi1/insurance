@@ -1,4 +1,6 @@
 package com.cg.controller;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import com.cg.exceptions.LoginAndCommonException;
 import com.cg.model.UserRole;
@@ -23,7 +25,6 @@ public class ProfileCreation extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		//Logger logger=LogManager.getLogger();
 		int isInserted = 0;
 		PrintWriter out = response.getWriter();
@@ -35,25 +36,24 @@ public class ProfileCreation extends HttpServlet {
 		String password = request.getParameter("password");
 		String rolecode = request.getParameter("rolecode");
 		
-		//System.out.println(username + " " + password + " " + rolecode);
-		
 		UserRole userRole = new UserRole(username, password, rolecode);
 		try {
 
 			isInserted = service.addUser(userRole);
 			if (isInserted > 0) {
-				//logger.info("User Role created successfully!!!!");
-				/*dispatcher = request.getRequestDispatcher("adminhome.html");
+				//logger.info("User Role creation success");
+				System.out.println("User Role creation success");
+				dispatcher = request.getRequestDispatcher("login.html");
 				dispatcher.include(request, response);
-		*/	} else {
-				//logger.info("Username already exists!! Enter a different Username");
-		/*		dispatcher = request.getRequestDispatcher("profilecreation.html");
+			} else {
+				//logger.info("Username already exists Please Enter a different Username");
+				System.out.println("Username already exists Please Enter a different Username");
+				dispatcher = request.getRequestDispatcher("login.html");
 				dispatcher.include(request, response);
-		*/	}
+		}
 		} catch (LoginAndCommonException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
 			//logger.error(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 }

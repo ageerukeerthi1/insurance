@@ -2,11 +2,11 @@ package com.cg.controller;
 
 
 import com.cg.exceptions.LoginAndCommonException;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import com.cg.model.Accounts;
 import com.cg.service.IInsuredService;
 import com.cg.service.InsuredService;
-
-import java.util.logging.Logger.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -45,7 +45,8 @@ public class InsuredAccountCreation extends HttpServlet {
 			
 			isCreated = service.accountCreation(account, userName);
 			if (isCreated == 1) {
-				//logger.info("Account Created Successfully!!");
+				//logger.info("Account Creation success");
+				System.out.println("Account Creation success");
 				dispatcher = request.getRequestDispatcher("insuredhome1.html");
 				dispatcher.forward(request, response);
 			}
@@ -53,6 +54,7 @@ public class InsuredAccountCreation extends HttpServlet {
 		} catch (LoginAndCommonException e) {
 			//logger.error(e.getMessage());
 			e.printStackTrace();
+			
 
 	}
 }

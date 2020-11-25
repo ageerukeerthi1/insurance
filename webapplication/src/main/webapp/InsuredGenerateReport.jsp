@@ -12,6 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<center>
 <% Accounts accounts = (Accounts)request.getAttribute("account");
 	   String busSegName = (String)request.getAttribute("busSegName");
 	   List<String> questions = (List)request.getAttribute("questions");
@@ -34,5 +35,6 @@
 	    	<c:out value="${answer}" /><br>
 	</c:forEach>
 	<%=premium %>
+	</center>
 </body>
 </html>

@@ -1,6 +1,8 @@
 package com.cg.controller;
 
 import java.io.IOException;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import java.io.PrintWriter;
 
@@ -35,13 +37,6 @@ public class InsuredViewPolicy extends HttpServlet {
 			System.out.println(username);
 			int accNo = service.getAccountNumber(username);
 			List<Policy> policies = service.getInsuredPolicies(accNo);
-			
-			/*if(policies.size() == 0) {
-				out.println("Policies does not exists.. ");
-				dispatcher = request.getRequestDispatcher("insuredhome.html");
-				dispatcher.include(request, response);
-			}
-			*/
 			System.out.println("policies size : "+policies.size());
 			if(policies.size() > 0) {
 				request.setAttribute("policies", policies);
@@ -53,14 +48,12 @@ public class InsuredViewPolicy extends HttpServlet {
 			
 			else {
 				//logger.info("Policies does not exists.. ");
-				/*dispatcher = request.getRequestDispatcher("insurerhome.html");
-				dispatcher.include(request, response);*/
+				System.out.println("Policies does not exists.. ");
 							
 			}
 		}catch (LoginAndCommonException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
 			//logger.error(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	

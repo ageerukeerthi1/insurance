@@ -1,6 +1,8 @@
 package com.cg.controller;
 
 import java.io.IOException;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 
 import javax.servlet.RequestDispatcher;
@@ -17,7 +19,7 @@ import com.cg.service.AgentService;
 import com.cg.service.IAgentService;
 
 import java.util.List;
-import java.util.logging.Logger.*;
+
 @WebServlet("/AgentViewPolicy")
 public class AgentViewPolicy extends HttpServlet {
 	//Logger logger=LogManager.getLogger();
@@ -34,9 +36,9 @@ public class AgentViewPolicy extends HttpServlet {
 			dispatcher = request.getRequestDispatcher("agentviewpolicy.jsp");
 			dispatcher.include(request, response);
 		} catch (LoginAndCommonException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
+			
 			//logger.error(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	@Override

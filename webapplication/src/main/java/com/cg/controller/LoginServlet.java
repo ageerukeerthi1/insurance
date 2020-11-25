@@ -1,13 +1,11 @@
 package com.cg.controller;
 
 import com.cg.exceptions.LoginAndCommonException;
+
 import com.cg.service.AdminService;
 import com.cg.service.IAdminService;
 import com.cg.service.IInsuredService;
 import com.cg.service.InsuredService;
-
-import java.util.logging.Logger.*;
-
 import java.io.IOException;
 
 import java.io.PrintWriter;
@@ -30,7 +28,7 @@ public class LoginServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//Logger logger=LogManager.getLogger();
-		//Creating an object to Admin Service class
+		
 		IAdminService adminService = new AdminService();
 		IInsuredService insuredService = new InsuredService();
 		HttpSession session = request.getSession();
@@ -74,12 +72,9 @@ public class LoginServlet extends HttpServlet
 						
 						isUserExists = insuredService.accountValidation(username);
 						if (isUserExists) {
-							//if (isCreated == 1) {
-								//out.println("Account Created Successfully!!");
-								dispatcher = request.getRequestDispatcher("insurerhome.html");//insurerhome.html");
+								dispatcher = request.getRequestDispatcher("insurerhome.html");
 								dispatcher.forward(request, response);
 						}else {
-									//out.println("Account does not exists! Create Account");
 									dispatcher = request.getRequestDispatcher("InsuredAccountCreation.html");
 									dispatcher.include(request, response);
 						}
@@ -90,15 +85,12 @@ public class LoginServlet extends HttpServlet
 			} else {
 				
 				//logger.info("User not found, Please register");
-				
-				
-/*				System.out.println("User not found");
-*/
+				System.out.println("User not found, Please register");
 			}
 		}catch (LoginAndCommonException e) {
-		
-			//throw new LoginException("Error occured while validating"+e.getMessage());
+	
 			//logger.error(e.getMessage());
+			e.printStackTrace();
 		
 		}
 	}

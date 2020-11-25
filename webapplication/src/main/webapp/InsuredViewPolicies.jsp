@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<center>
 
 	<div class="adminHP">
 		<div class="header">
@@ -37,6 +38,6 @@
 	</table>
 	</div>
 	
-	
+	</center>
 </body>
 </html>

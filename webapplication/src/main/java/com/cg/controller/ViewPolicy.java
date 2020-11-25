@@ -1,7 +1,9 @@
 package com.cg.controller;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import java.util.List;
-import java.util.logging.Logger.*;
+
 
 import java.io.IOException;
 
@@ -32,14 +34,13 @@ public class ViewPolicy extends HttpServlet {
 			dispatcher = request.getRequestDispatcher("viewpolicy.jsp");
 			dispatcher.include(request, response);
 		} catch (LoginAndCommonException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
 			//logger.error(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doPost(req, resp);
 	}
 }
