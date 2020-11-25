@@ -1,6 +1,5 @@
 package com.cg.controller;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 import com.cg.exceptions.LoginAndCommonException;
 import com.cg.model.Accounts;
@@ -28,7 +27,7 @@ public class InsuredReportGenerationServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Logger logger=LogManager.getLogger();
+		//Logger logger=LogManager.getLogger();
 		RequestDispatcher dispatcher = null;
 		String busSegName = null;
 		Double premium = 0.0;
@@ -62,7 +61,7 @@ public class InsuredReportGenerationServlet extends HttpServlet {
 			
 		} catch(LoginAndCommonException e) {
 			// TODO Auto-generated catch block
-		logger.error(e.getMessage());
+		//logger.error(e.getMessage());
 		}
 		
 	}

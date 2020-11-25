@@ -1,6 +1,5 @@
 package com.cg.controller;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 import com.cg.exceptions.LoginAndCommonException;
 import com.cg.model.Accounts;
@@ -25,7 +24,7 @@ public class InsuredAccountCreation extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		IInsuredService service = new InsuredService();
-		Logger logger=LogManager.getLogger();
+		//Logger logger=LogManager.getLogger();
 		int isCreated = 0;
 		
 		PrintWriter out = response.getWriter();
@@ -42,18 +41,19 @@ public class InsuredAccountCreation extends HttpServlet {
 		try {
 			
 			String bussinessSegmentId = service.getLineOfBusinessIdByName(busSegName);
-			Accounts account = new Accounts(insuredName, insuredStreet, insuredCity, insuredState, insuredZip, bussinessSegmentId);
+			Accounts account = new Accounts(insuredName, insuredStreet, insuredCity, insuredState, insuredZip, bussinessSegmentId,0);
 			
 			isCreated = service.accountCreation(account, userName);
 			if (isCreated == 1) {
-				logger.info("Account Created Successfully!!");
-				dispatcher = request.getRequestDispatcher("insuredhome1.html");//insurerhome.html");
+				//logger.info("Account Created Successfully!!");
+				dispatcher = request.getRequestDispatcher("insuredhome1.html");
 				dispatcher.forward(request, response);
 			}
 			
 		} catch (LoginAndCommonException e) {
-			logger.error(e.getMessage());
-		}
+			//logger.error(e.getMessage());
+			e.printStackTrace();
 
 	}
+}
 }

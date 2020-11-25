@@ -19,9 +19,6 @@ public class AdminDAO implements IAdminDAO {
 	static Connection connection = null;
 	static PreparedStatement prepareStatement = null;
 	static ResultSet resultSet = null;
-
-	
-	
 	
 	public boolean loginValidation(String username, String password) throws LoginAndCommonException {
 		// TODO Auto-generated method stub

@@ -1,6 +1,4 @@
 package com.cg.controller;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import com.cg.exceptions.LoginAndCommonException;
 import com.cg.model.Accounts;
@@ -14,15 +12,16 @@ import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+@WebServlet("/AgentAccountCreationServlet")
 public class AgentAccountCreationServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Logger logger=LogManager.getLogger();
+		//Logger logger=LogManager.getLogger();
 		
         IAgentService service = new AgentService();
 		
@@ -47,33 +46,35 @@ public class AgentAccountCreationServlet extends HttpServlet {
 		try {
 						
 			String bussinessSegmentId = service.getLineOfBusinessIdByName(busSegName);
-			Accounts account = new Accounts(insuredName, insuredStreet, insuredCity, insuredState, insuredZip, bussinessSegmentId);
+			Accounts account = new Accounts(insuredName, insuredStreet, insuredCity, insuredState, insuredZip, bussinessSegmentId,0);
 			
 			isUserExists = service.isUserExists(userName);
 			if (isUserExists) {
                 
 				isAccountExists = service.accountValidation(userName);
 				if(isAccountExists) {
-					logger.info("Account already exists");
+					//logger.info("Account already exists");
 					System.out.println("Account already exists");
-					dispatcher = request.getRequestDispatcher("agenthome.jsp");
+					dispatcher = request.getRequestDispatcher("insuredhome1.html");
 					dispatcher.include(request, response);
 				} else {
 				    isCreated = service.accountCreation(account, userName);
 				    if (isCreated == 1) {
-					logger.info("Account Created Successfully!!");
+					//logger.info("Account Created Successfully!!");
+				    	System.out.println("Account Created Successfully!!");	
 					dispatcher = request.getRequestDispatcher("agenthome.jsp");
 					dispatcher.include(request, response);
 				   }
 				}
 			} else {
-				logger.info("User does not exists! First register as user");
-				//System.out.println("User does not exists! First register as user");
+				//logger.info("User does not exists! First register as user");
+				System.out.println("User does not exists! First register as user");
 				dispatcher = request.getRequestDispatcher("agenthome.jsp");
 				dispatcher.include(request, response);
 			}
 		} catch (LoginAndCommonException e) {
-			logger.error(e.getMessage());
+			//logger.error(e.getMessage());
+			e.printStackTrace();
 		}
 
 	}

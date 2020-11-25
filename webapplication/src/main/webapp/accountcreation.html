@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +9,7 @@
 	<div class = "accountbox">
 	<h1>Account Creation</h1>
 	<br>
+	<center>
 	<form action = "InsuredAccountCreation" method = "post">
 		<p>User Name</p>
 		<input type = "text" name = "userName" placeholder = "Enter Insured name" pattern = "[a-zA-Z][a-zA-Z0-9]{8,20}" title = "The insured name should contain letters and numbers with atleast 8 characters" required>
@@ -33,5 +33,7 @@
 		</select><br><br>
 		<center><input type = "submit" name = "submit" value = "Create Account"></center>
 	</form>
+	</center>
+	</div>
 </body>
 </html>

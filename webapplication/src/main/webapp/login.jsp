@@ -6,28 +6,19 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
-	<div class="adminHP">		
-		<div class="header">		
-			<a href="index.html" class="logo">CompanyLogo</a>
-			<div class="header-right">
-				<a href="index.html" class="logo">Home</a>
-			</div>			
-		</div>
-	<div class = "loginbox">
-	
-		<h1>Login</h1>
-
-		
-		<form action = "LoginServlet" method = "post">
-			<p>User Name</p>
-			<input type = "text" name = "username" required>
-			<p>Password</p>
-			<input type = "password" name = "password" required>
-			<br><br><br>
-			<input type = "submit" name = "submit" value = "Login">
-		</form>		
-	</div>
-	
+<body>  
+    <center> <h1> User Login </h1> </center> 
+    <form action="LoginServlet" method="post">
+        <div class="container"> 
+            <label>User ID : </label><br> 
+            <input type="text" placeholder="Enter UserID" name="username" required><br>
+            <label>Password : </label><br> 
+            <input type="password" placeholder="Enter Password" name="password" required><br>
+            <button type="submit">Login</button><br>
+            <input type="checkbox" checked="checked"> Remember me 
+            <button type="button" class="cancelbtn"> Cancel</button> 
+     
+        </div>
+    </form>
 </body>
 </html>

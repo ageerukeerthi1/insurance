@@ -1,7 +1,4 @@
 package com.cg.controller;
-import org.apache.logging.log4j.LogManager;
-
-import org.apache.logging.log4j.Logger;
 
 import com.cg.exceptions.LoginAndCommonException;
 import com.cg.service.AdminService;
@@ -32,7 +29,7 @@ public class LoginServlet extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Logger logger=LogManager.getLogger();
+		//Logger logger=LogManager.getLogger();
 		//Creating an object to Admin Service class
 		IAdminService adminService = new AdminService();
 		IInsuredService insuredService = new InsuredService();
@@ -92,7 +89,7 @@ public class LoginServlet extends HttpServlet
 				
 			} else {
 				
-				logger.info("User not found, Please register");
+				//logger.info("User not found, Please register");
 				
 				
 /*				System.out.println("User not found");
@@ -101,7 +98,7 @@ public class LoginServlet extends HttpServlet
 		}catch (LoginAndCommonException e) {
 		
 			//throw new LoginException("Error occured while validating"+e.getMessage());
-			logger.error(e.getMessage());
+			//logger.error(e.getMessage());
 		
 		}
 	}

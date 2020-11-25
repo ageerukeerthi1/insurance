@@ -1,26 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
 
+<body>
 
 <div class="adminHP">
 		<div class="header">
-			<button href="#default" class="logo">CompanyLogo</button>
 			<div class="header-right">
-				<button class="active" href="homepage2new.html">Logout</button>
 			</div>
 		</div>
-		</div>
+</div>
 
 	<div class = "accountbox">
 	<h1>Account Creation</h1>
 	<br>
+	
 	<form action ="InsuredAccountCreation" method = "post">
 		<p>User Name</p>
 		<input type = "text" name = "userName" pattern = "[a-zA-Z][a-zA-Z0-9]{8,20}" title = "The insured name should contain letters and numbers with atleast 8 characters" required>
@@ -44,6 +41,7 @@
 		</select><br><br><br><br>
 		<center><input type = "submit" name = "submit" value = "Create Account"></center>
 	</form>
-</body>
+	
 
+</body>
 </html>

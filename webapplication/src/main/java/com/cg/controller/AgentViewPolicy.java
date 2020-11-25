@@ -2,6 +2,7 @@ package com.cg.controller;
 
 import java.io.IOException;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,9 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import com.cg.exceptions.LoginAndCommonException;
 import com.cg.model.Policy;
@@ -22,7 +20,7 @@ import java.util.List;
 import java.util.logging.Logger.*;
 @WebServlet("/AgentViewPolicy")
 public class AgentViewPolicy extends HttpServlet {
-	Logger logger=LogManager.getLogger();
+	//Logger logger=LogManager.getLogger();
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		IAgentService service = new AgentService();
@@ -38,7 +36,7 @@ public class AgentViewPolicy extends HttpServlet {
 		} catch (LoginAndCommonException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
-			logger.error(e.getMessage());
+			//logger.error(e.getMessage());
 		}
 	}
 	@Override

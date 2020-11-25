@@ -1,6 +1,7 @@
 package com.cg.controller;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
@@ -10,8 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import com.cg.exceptions.LoginAndCommonException;
 import com.cg.model.Policy;
@@ -28,7 +27,7 @@ public class PremiumGenerationServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		Logger logger=LogManager.getLogger();
+		//Logger logger=LogManager.getLogger();
 		ServletContext context = request.getServletContext();
 		int polPremium = 0;
 		int sumOfWeightages = 0;
@@ -68,7 +67,7 @@ public class PremiumGenerationServlet extends HttpServlet {
 			policy.setPolicyPremium(polPremium);
 			isInserted = service.createPolicy(policy);
 			if(isInserted > 0) {
-				logger.info("Policy created successfully!!!!");
+				//logger.info("Policy created successfully!!!!");
 				polNumber = service.getPolicyNumber();
 				service.addPolicyDetails(polNumber, questionIds, selectedAnswers);
 				System.out.println("In Premium generation servlet "+polNumber);
@@ -82,7 +81,7 @@ public class PremiumGenerationServlet extends HttpServlet {
 		} catch (LoginAndCommonException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
-			logger.error(e.getStackTrace());
+		//	logger.error(e.getStackTrace());
 		}
 	}
 }

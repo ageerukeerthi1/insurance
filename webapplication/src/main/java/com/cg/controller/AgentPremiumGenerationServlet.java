@@ -1,6 +1,7 @@
 package com.cg.controller;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
@@ -11,9 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import com.cg.exceptions.LoginAndCommonException;
 import com.cg.model.Policy;
@@ -31,7 +29,7 @@ public class AgentPremiumGenerationServlet extends HttpServlet {
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 		{
 			 PrintWriter out = response.getWriter();
-			 Logger logger=LogManager.getLogger();
+			 //Logger logger=LogManager.getLogger();
 				
 				ServletContext context = request.getServletContext();
 				int polPremium = 0;
@@ -73,7 +71,7 @@ public class AgentPremiumGenerationServlet extends HttpServlet {
 					policy.setPolicyPremium(polPremium);
 					isInserted = service.createPolicy(policy);
 					if(isInserted > 0) {
-						logger.info("Policy created successfully!!!!");
+						//logger.info("Policy created successfully!!!!");
 						polNumber = service.getPolicyNumber();
 						String username = (String)session.getAttribute("username");
 						service.addPolicyDetails(polNumber, questionIds, selectedAnswers);

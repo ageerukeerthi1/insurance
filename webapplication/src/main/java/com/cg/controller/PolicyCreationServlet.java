@@ -1,7 +1,4 @@
 package com.cg.controller;
-import org.apache.logging.log4j.LogManager;
-
-import org.apache.logging.log4j.Logger;
 import java.util.logging.Logger.*;
 
 import java.io.IOException;
@@ -33,7 +30,7 @@ public class PolicyCreationServlet extends HttpServlet
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Logger logger=LogManager.getLogger();
+		//Logger logger=LogManager.getLogger();
 		int accNumber = Integer.parseInt(request.getParameter("accNumber"));
 		ServletContext context = request.getServletContext();
 		context.setAttribute("accNumber", accNumber);
@@ -57,7 +54,7 @@ public class PolicyCreationServlet extends HttpServlet
 		} catch (LoginAndCommonException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
-			logger.error(e.getMessage());
+			//logger.error(e.getMessage());
 		}
 		
 	}

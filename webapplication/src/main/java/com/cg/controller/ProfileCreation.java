@@ -1,6 +1,4 @@
 package com.cg.controller;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import com.cg.exceptions.LoginAndCommonException;
 import com.cg.model.UserRole;
@@ -26,7 +24,7 @@ public class ProfileCreation extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Logger logger=LogManager.getLogger();
+		//Logger logger=LogManager.getLogger();
 		int isInserted = 0;
 		PrintWriter out = response.getWriter();
 		RequestDispatcher dispatcher = null;
@@ -44,18 +42,18 @@ public class ProfileCreation extends HttpServlet {
 
 			isInserted = service.addUser(userRole);
 			if (isInserted > 0) {
-				logger.info("User Role created successfully!!!!");
+				//logger.info("User Role created successfully!!!!");
 				/*dispatcher = request.getRequestDispatcher("adminhome.html");
 				dispatcher.include(request, response);
 		*/	} else {
-				logger.info("Username already exists!! Enter a different Username");
+				//logger.info("Username already exists!! Enter a different Username");
 		/*		dispatcher = request.getRequestDispatcher("profilecreation.html");
 				dispatcher.include(request, response);
 		*/	}
 		} catch (LoginAndCommonException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
-			logger.error(e.getMessage());
+			//logger.error(e.getMessage());
 		}
 	}
 }

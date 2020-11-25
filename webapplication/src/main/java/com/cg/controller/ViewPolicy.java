@@ -1,6 +1,4 @@
 package com.cg.controller;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.logging.Logger.*;
@@ -25,7 +23,7 @@ public class ViewPolicy extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		IAdminService service = new AdminService();
-		Logger logger=LogManager.getLogger();
+		//Logger logger=LogManager.getLogger();
 		RequestDispatcher dispatcher = null;
 		try {
 			List<Policy> policies = service.getPolicies();
@@ -36,7 +34,7 @@ public class ViewPolicy extends HttpServlet {
 		} catch (LoginAndCommonException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
-			logger.error(e.getMessage());
+			//logger.error(e.getMessage());
 		}
 	}
 	@Override

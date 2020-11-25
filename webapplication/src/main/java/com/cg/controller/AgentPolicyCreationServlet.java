@@ -1,6 +1,4 @@
 package com.cg.controller;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import com.cg.exceptions.LoginAndCommonException;
 import com.cg.model.PolicyQuestions;
@@ -29,7 +27,7 @@ public class AgentPolicyCreationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		Logger logger=LogManager.getLogger();
+		//Logger logger=LogManager.getLogger();
 		
 		int accNumber = Integer.parseInt(request.getParameter("accNo"));
 		ServletContext context = request.getServletContext();
@@ -58,7 +56,7 @@ public class AgentPolicyCreationServlet extends HttpServlet {
 				request.setAttribute("questions", policyQuestions);
 				dispatcher.forward(request, response);
 			} else {
-				logger.info("Account does not exists, so create an account");
+				//logger.info("Account does not exists, so create an account");
 				dispatcher = request.getRequestDispatcher("agenthome.jsp");
 				dispatcher.include(request, response);
 

@@ -1,6 +1,7 @@
 package com.cg.service;
 
 import java.util.List;
+import java.util.Random;
 
 import com.cg.dao.IInsuredDAO;
 import com.cg.dao.InsuredDAO;
@@ -27,6 +28,10 @@ public class InsuredService implements IInsuredService {
 	
 	public int accountCreation(Accounts account, String userName) throws LoginAndCommonException {
 		// TODO Auto-generated method stub
+		Random rnd=new Random();
+		int accountnumber=rnd.nextInt(900000)+100000 ;
+		account.setAccountNumber(accountnumber);
+		
 		return insuredDao.accountCreation(account, userName);
 	}
 

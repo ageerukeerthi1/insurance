@@ -28,17 +28,6 @@ public class Accounts implements Serializable{
 		this.accountNumber = accountNumber;
 	}
 
- 
-	public Accounts(String insuredName, String insuredStreet, String insuredCity, String insuredState,
-			Integer insuredZip, String lineOfBusiness) {
-		super();
-		this.insuredName = insuredName;
-		this.insuredStreet = insuredStreet;
-		this.insuredCity = insuredCity;
-		this.insuredState = insuredState;
-		this.insuredZip = insuredZip;
-		this.lineOfBusiness = lineOfBusiness;
-	}
 
 
 	public String getInsuredName() {
